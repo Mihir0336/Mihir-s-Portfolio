@@ -1,4 +1,4 @@
-# Portfolio
+## Portfolio
 Mihir's Portfolio
 
 ## About the Project
@@ -26,3 +26,7 @@ To install the project, follow these steps:
    ```bash
    npm run dev
    ```
+
+## Languages and Frameworks Used
+- **Languages**: JavaScript, HTML, CSS
+- **Frameworks**: React, Tailwind CSS
