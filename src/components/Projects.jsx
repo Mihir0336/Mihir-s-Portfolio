@@ -90,7 +90,7 @@ export default function Projects() {
       category: ["web", "frontend"],
       technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
       demoLink: "#",
-      githubLink: "https://github.com/Mihir0336/UniMart-Groceries"
+      githubLink: "https://github.com/Mihir0336/UniMart-Groceries" target="_blank"
     },
     {
       id: 2,
