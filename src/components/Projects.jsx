@@ -85,7 +85,7 @@ export default function Projects() {
     {
       id: 1,
       title: "E-Commerce Website",
-      description: "Modern e-commerce site with login, product browsing, cart, checkout, and admin panel—optimized for a smooth, responsive shopping experience.",
+      description: "Modern e-commerce site with login, shopping, checkout, and admin panel—fully responsive and user-friendly.",
       image: "https://picsum.photos/seed/ecommerce/600/400",
       category: ["web", "frontend"],
       technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
