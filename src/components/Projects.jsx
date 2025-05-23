@@ -85,12 +85,12 @@ export default function Projects() {
     {
       id: 1,
       title: "E-Commerce Website",
-      description: "A fully responsive e-commerce platform with cart functionality and product filtering.",
+      description: "Modern e-commerce site with login, product browsing, cart, checkout, and admin panel—optimized for a smooth, responsive shopping experience.",
       image: "https://picsum.photos/seed/ecommerce/600/400",
       category: ["web", "frontend"],
       technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
       demoLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/Mihir0336/UniMart-Groceries"
     },
     {
       id: 2,
