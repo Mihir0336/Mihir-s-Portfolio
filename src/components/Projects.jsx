@@ -90,7 +90,7 @@ export default function Projects() {
       category: ["web", "frontend"],
       technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
       demoLink: "#",
-      githubLink: "https://github.com/Mihir0336/UniMart-Groceries" target="_blank"
+      githubLink: "https://github.com/Mihir0336/UniMart-Groceries"
     },
     {
       id: 2,
@@ -274,7 +274,7 @@ export default function Projects() {
                     Demo
                   </motion.a>
                   <motion.a 
-                    href={project.githubLink} 
+                    href={project.githubLink} target="_blank"
                     className="px-3 py-1.5 bg-white/90 text-dark rounded-full text-sm hover:bg-white transition-colors duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
