@@ -266,7 +266,7 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                   <motion.a 
-                    href={project.demoLink} 
+                    href={project.demoLink} target="_blank"
                     className="px-3 py-1.5 bg-indigo-400 text-white rounded-full text-sm hover:bg-indigo-500 transition-colors duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
