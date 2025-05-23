@@ -119,8 +119,8 @@ export default function Projects() {
       image: "https://picsum.photos/seed/portfolio/600/400",
       category: ["web", "ui"],
       technologies: ["React", "Framer Motion", "Tailwind CSS"],
-      demoLink: "#",
-      githubLink: "#"
+      demoLink: "https://portfolio-mihirpatel0336.vercel.app/",
+      githubLink: "https://github.com/Mihir0336/Mihir-s-Portfolio"
     },
     {
       id: 5,
