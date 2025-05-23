@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,9 +13,11 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   
   // Reference for parallax effect
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -83,15 +86,21 @@ export default function Contact() {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
+      try {
+        await emailjs.sendForm(
+          'service_portfolio', // Replace with your EmailJS service ID
+          'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+          formRef.current,
+          'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        );
+        
         setIsSubmitted(true);
         setFormData({
           name: "",
@@ -104,7 +113,12 @@ export default function Contact() {
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
-      }, 1500);
+      } catch (error) {
+        console.error('Error sending email:', error);
+        setSubmitError("Failed to send message. Please try again later.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -313,7 +327,13 @@ export default function Contact() {
                   <p className="text-white/70">Thank you for your message. I'll get back to you soon.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit}>
+                  {submitError && (
+                    <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
+                      {submitError}
+                    </div>
+                  )}
+                  
                   <div className="mb-6">
                     <label htmlFor="name" className="block text-white/80 mb-2">Name</label>
                     <motion.input
