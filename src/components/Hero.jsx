@@ -127,7 +127,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-20"
       ref={sectionRef}
     >
       {/* Background particles with optimized parallax */}
@@ -145,7 +145,7 @@ const Hero = () => {
         className="container mx-auto px-4 relative z-10"
         style={{ y: contentY }}
       >
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-8 max-w-6xl mx-auto">
           {/* Content section */}
           <div className="text-center flex-1 order-2 lg:order-1">
             <motion.div
@@ -157,9 +157,9 @@ const Hero = () => {
               }}
               style={{ y: titleY }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 tracking-tight flex flex-wrap justify-center items-center gap-2">
                 <motion.span 
-                  className="text-white/90 inline-block"
+                  className="text-white/90"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
@@ -168,10 +168,10 @@ const Hero = () => {
                     ease: "easeOut"
                   }}
                 >
-                  Hi, I'm{" "}
+                  Hi, I'm
                 </motion.span>
                 <motion.span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 inline-block"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ 
@@ -195,7 +195,7 @@ const Hero = () => {
               }}
               style={{ y: subtitleY }}
             >
-              <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 font-medium">
+              <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-4 sm:mb-8 font-medium">
                 <motion.span 
                   className="text-indigo-400/70 inline-block"
                   initial={{ opacity: 0 }}
@@ -216,7 +216,7 @@ const Hero = () => {
             </motion.div>
             
             <motion.p 
-              className="text-base sm:text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
