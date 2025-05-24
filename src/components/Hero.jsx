@@ -305,7 +305,7 @@ const Hero = () => {
             className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 flex-shrink-0 order-1 lg:order-2"
           >
             <Lottie
-              path="/patel.json"
+              path="/patel2.json"
               loop={true}
               autoplay={true}
             />
