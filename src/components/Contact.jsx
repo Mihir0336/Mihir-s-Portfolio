@@ -23,26 +23,59 @@ export default function Contact() {
     offset: ["start end", "end start"]
   });
   
-  // Parallax transformations
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  // Optimized parallax transformations with reduced complexity
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100], {
+    clamp: true // Prevent values from exceeding bounds
+  });
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0], {
+    clamp: true
+  });
+
+  // Optimized background parallax effects
+  const bgY1 = useTransform(scrollYProgress, [0, 1], [0, -100], {
+    clamp: true
+  });
+  
+  const bgY2 = useTransform(scrollYProgress, [0, 1], [0, 100], {
+    clamp: true
+  });
   
   // Background animated elements
   const circleRef = useRef(null);
   
+  // Optimized mouse movement effect
   useEffect(() => {
     if (!circleRef.current) return;
     
+    let rafId;
+    let lastTime = 0;
+    const fps = 30; // Limit to 30fps for better performance
+    const frameInterval = 1000 / fps;
+    
     const handleMouseMove = (e) => {
+      const currentTime = performance.now();
+      if (currentTime - lastTime < frameInterval) return;
+      
+      lastTime = currentTime;
+      
       const { clientX, clientY } = e;
       const xPos = (clientX / window.innerWidth - 0.5) * 20;
       const yPos = (clientY / window.innerHeight - 0.5) * 20;
       
-      circleRef.current.style.transform = `translate(${xPos}px, ${yPos}px)`;
+      rafId = requestAnimationFrame(() => {
+        if (circleRef.current) {
+          circleRef.current.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        }
+      });
     };
     
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleChange = (e) => {
@@ -134,11 +167,14 @@ export default function Contact() {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: {
-      y: 0,
       opacity: 1,
-      transition: { duration: 0.5 }
+      scale: 1,
+      transition: { 
+        duration: 0.5,
+        ease: "easeOut"
+      }
     }
   };
   
@@ -152,30 +188,41 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-24 px-4 md:px-8 bg-gray-900 text-white relative overflow-hidden"
+      className="pt-12 pb-24 px-4 md:px-8 bg-gray-900 text-white relative overflow-hidden"
       ref={sectionRef}
+      style={{ willChange: 'transform' }}
     >
-      {/* Background decorative elements with parallax */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Background decorative elements with optimized parallax */}
+      <div className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-400/5 rounded-full blur-3xl"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
+          style={{ 
+            y: bgY1,
+            willChange: 'transform'
+          }}
         />
         <motion.div 
           className="absolute -bottom-20 -left-20 w-60 h-60 bg-indigo-400/10 rounded-full blur-2xl"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
+          style={{ 
+            y: bgY2,
+            willChange: 'transform'
+          }}
         />
         <div 
           ref={circleRef}
           className="absolute top-1/3 left-1/4 w-40 h-40 bg-indigo-400/5 rounded-full blur-xl"
+          style={{ willChange: 'transform' }}
         />
       </div>
       
       <div className="max-w-7xl mx-auto relative">
-        {/* Section header */}
+        {/* Section header with optimized animations */}
         <motion.div 
           className="text-center mb-16"
-          style={{ opacity, y }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
           <motion.h2 
             className="text-4xl md:text-5xl font-bold mb-4"
@@ -184,20 +231,38 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            Get In <span className="text-indigo-400">Touch</span>
+            Get In <motion.span 
+              className="text-indigo-400 inline-block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ 
+                duration: 0.5,
+                delay: 0.2,
+                type: "spring",
+                stiffness: 200
+              }}
+              viewport={{ once: true }}
+            >Touch</motion.span>
           </motion.h2>
           <motion.div 
             className="w-20 h-1 bg-indigo-400 mx-auto mb-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            transition={{ duration: 0.8 }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut"
+            }}
             viewport={{ once: true }}
           ></motion.div>
           <motion.p 
             className="text-xl text-white/70 max-w-xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ 
+              duration: 0.5, 
+              delay: 0.3,
+              ease: "easeOut"
+            }}
             viewport={{ once: true }}
           >
             Have a question or want to work together? Drop me a message!
@@ -205,14 +270,17 @@ export default function Contact() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Info - Parallax scrolling */}
+          {/* Contact Info with optimized parallax */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             className="space-y-8"
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -50]) }}
+            style={{ 
+              y: useTransform(scrollYProgress, [0, 1], [0, -50], { clamp: true }),
+              willChange: 'transform'
+            }}
           >
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
@@ -301,13 +369,16 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* Contact Form with hover animations */}
+          {/* Contact Form with optimized animations */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -30]) }}
+            style={{ 
+              y: useTransform(scrollYProgress, [0, 1], [0, -30], { clamp: true }),
+              willChange: 'transform'
+            }}
           >
             <motion.div 
               className="bg-gray-800/50 border border-indigo-400/10 rounded-xl p-8 shadow-lg"
