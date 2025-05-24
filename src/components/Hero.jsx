@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Lottie from "lottie-react";
 
 const Hero = () => {
   const canvasRef = useRef(null);
@@ -144,151 +145,171 @@ const Hero = () => {
         className="container mx-auto px-4 relative z-10"
         style={{ y: contentY }}
       >
-        <div className="text-center max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6,
-              ease: "easeOut"
-            }}
-            style={{ y: titleY }}
-          >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-              <motion.span 
-                className="text-white/90 inline-block"
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
+          {/* Content section */}
+          <div className="text-center flex-1 order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              style={{ y: titleY }}
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 tracking-tight">
+                <motion.span 
+                  className="text-white/90 inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: 0.2,
+                    ease: "easeOut"
+                  }}
+                >
+                  Hi, I'm{" "}
+                </motion.span>
+                <motion.span 
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 inline-block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: 0.3,
+                    ease: "easeOut"
+                  }}
+                >
+                  Mihir Patel
+                </motion.span>
+              </h1>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.6,
+                delay: 0.4,
+                ease: "easeOut"
+              }}
+              style={{ y: subtitleY }}
+            >
+              <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 font-medium">
+                <motion.span 
+                  className="text-indigo-400/70 inline-block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                >
+                  //{" "}
+                </motion.span>
+                <motion.span 
+                  className="typing-text inline-block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
+                >
+                  Full Stack Developer & Open Source Enthusiast
+                </motion.span>
+              </h2>
+            </motion.div>
+            
+            <motion.p 
+              className="text-base sm:text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.6,
+                delay: 0.6,
+                ease: "easeOut"
+              }}
+              style={{ y: contentY }}
+            >
+              Building scalable web applications with modern technologies. 
+              Passionate about clean code, performance optimization, and creating exceptional user experiences.
+            </motion.p>
+            
+            {/* Buttons and social icons container */}
+            <div className="flex flex-col items-center">
+              <motion.div
+                className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.5,
-                  delay: 0.2,
+                  duration: 0.6,
+                  delay: 0.8,
                   ease: "easeOut"
                 }}
+                style={{ y: buttonY }}
               >
-                Hi, I'm{" "}
-              </motion.span>
-              <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 inline-block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                <motion.a
+                  href="#projects"
+                  className="group relative px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium overflow-hidden text-xs sm:text-sm md:text-base"
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">View Projects</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.a>
+                <motion.a
+                  href="#contact"
+                  className="group relative px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg border-2 border-indigo-400/20 bg-transparent text-white font-medium overflow-hidden text-xs sm:text-sm md:text-base"
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">Contact Me</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-indigo-400/10"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.a>
+              </motion.div>
+              
+              <motion.div
+                className="mt-6 sm:mt-8 md:mt-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.5,
-                  delay: 0.3,
+                  duration: 0.6,
+                  delay: 1,
                   ease: "easeOut"
                 }}
+                style={{ y: buttonY }}
               >
-                Mihir Patel
-              </motion.span>
-            </h1>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6,
-              delay: 0.4,
-              ease: "easeOut"
-            }}
-            style={{ y: subtitleY }}
-          >
-            <h2 className="text-2xl md:text-3xl text-gray-300 mb-8 font-medium">
-              <motion.span 
-                className="text-indigo-400/70 inline-block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-              >
-                //{" "}
-              </motion.span>
-              <motion.span 
-                className="typing-text inline-block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-              >
-                Full Stack Developer & Open Source Enthusiast
-              </motion.span>
-            </h2>
-          </motion.div>
-          
-          <motion.p 
-            className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6,
-              delay: 0.6,
-              ease: "easeOut"
-            }}
-            style={{ y: contentY }}
-          >
-            Building scalable web applications with modern technologies. 
-            Passionate about clean code, performance optimization, and creating exceptional user experiences.
-          </motion.p>
-          
-          <motion.div
-            className="flex flex-wrap justify-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6,
-              delay: 0.8,
-              ease: "easeOut"
-            }}
-            style={{ y: buttonY }}
-          >
-            <motion.a
-              href="#projects"
-              className="group relative px-8 py-4 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium overflow-hidden"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10">View Projects</span>
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="group relative px-8 py-4 rounded-lg border-2 border-indigo-400/20 bg-transparent text-white font-medium overflow-hidden"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10">Contact Me</span>
-              <motion.div 
-                className="absolute inset-0 bg-indigo-400/10"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.a>
-          </motion.div>
-          
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6,
-              delay: 1,
-              ease: "easeOut"
-            }}
-            style={{ y: buttonY }}
-          >
-            <div className="flex justify-center space-x-8">
-              <SocialIcon href="https://github.com/mihir0336" icon="github" />
-              <SocialIcon href="https://www.linkedin.com/in/mihir-patel-002443244/" icon="linkedin" />
+                <div className="flex space-x-6 sm:space-x-8">
+                  <SocialIcon href="https://github.com/mihir0336" icon="github" />
+                  <SocialIcon href="https://www.linkedin.com/in/mihir-patel-002443244/" icon="linkedin" />
+                </div>
+              </motion.div>
             </div>
+          </div>
+
+          {/* Lottie Animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 flex-shrink-0 order-1 lg:order-2"
+          >
+            <Lottie
+              path="/patel.json"
+              loop={true}
+              autoplay={true}
+            />
           </motion.div>
         </div>
       </motion.div>

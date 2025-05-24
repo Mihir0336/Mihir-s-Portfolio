@@ -11,10 +11,12 @@
     "tailwind:build": "tailwindcss -i ./src/index.css -o ./src/tailwind.output.css --watch"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.5",
     "@react-three/drei": "^9.102.6",
     "@react-three/fiber": "^8.15.19",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.7.3",
+    "lottie-react": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^5.8.0",
