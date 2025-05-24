@@ -210,7 +210,7 @@ const Hero = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4, delay: 0.6 }}
                 >
-                  Full Stack Developer & Open Source Enthusiast
+                  Full Stack Developer
                 </motion.span>
               </h2>
             </motion.div>
@@ -226,8 +226,7 @@ const Hero = () => {
               }}
               style={{ y: contentY }}
             >
-              Building scalable web applications with modern technologies. 
-              Passionate about clean code, performance optimization, and creating exceptional user experiences.
+              Building scalable web apps with clean code, optimized performance, and great user experience.
             </motion.p>
             
             {/* Buttons and social icons container */}
