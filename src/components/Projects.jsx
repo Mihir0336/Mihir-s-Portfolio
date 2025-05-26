@@ -104,13 +104,13 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "Kanban-style task manager with drag-and-drop functionality.",
+      title: "Stock Management System",
+      description: "A comprehensive stock management system for agricon shops with features for managing products, generating bills, and tracking inventory..",
       image: "https://picsum.photos/seed/taskmanager/600/400",
       category: ["app", "fullstack"],
-      technologies: ["React", "TypeScript", "Express"],
+      technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
       demoLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/Mihir0336/Stock-Management-System"
     },
     {
       id: 4,
