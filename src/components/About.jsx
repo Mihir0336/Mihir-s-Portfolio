@@ -267,10 +267,10 @@ const About = () => {
           <motion.div variants={itemVariants} className="ml-4 space-y-4">
             {[
               {
-                degree: "Bachelor of Science",
-                field: "Computer Science",
-                university: "Finding Country and University",
-                year: "2024 - still finding"
+                degree: "Bachelor of Engineering",
+                field: "Computer Engineering",
+                university: "Monark University",
+                year: "2025 - Persuing"
               },
               {
                 degree: "Diploma in",
