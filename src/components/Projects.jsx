@@ -94,13 +94,13 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "Social Media Dashboard",
+      title: "Inventory Billing System",
       description: "Interactive dashboard with dark/light mode and data visualization.",
       image: "https://picsum.photos/seed/dashboard/600/400",
-      category: ["web", "frontend"],
-      technologies: ["React", "Chart.js", "Tailwind CSS"],
+      category: ["web", "frontend", "backend"],
+      technologies: ["Next.js", "Prisma ORM", "MySQL", "NextAuth", "Tailwind CSS"],
       demoLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/Mihir0336/inventory-billing-system"
     },
     {
       id: 3,
@@ -120,7 +120,7 @@ export default function Projects() {
       category: ["web", "ui"],
       technologies: ["React", "Framer Motion", "Tailwind CSS"],
       demoLink: "https://mihir0336.vercel.app/",
-      githubLink: "https://github.com/Mihir0336/Mihir-s-Portfolio"
+      githubLink: "https://github.com/Mihir0336/Mihir-s-sPortfolio"
     },
     {
       id: 5,
