@@ -302,7 +302,7 @@ const About = () => {
           style={{ y: buttonY, scale: buttonScale }}
         >
           <motion.a
-            href="./assets/Mihir_Patel_CV.pdf"
+            href="/Mihir_Patel_CV.pdf"
             download
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/20 transition-colors duration-300"
             whileHover={{ scale: 1.02 }}
