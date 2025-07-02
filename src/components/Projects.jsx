@@ -121,26 +121,6 @@ export default function Projects() {
       technologies: ["React", "Framer Motion", "Tailwind CSS"],
       demoLink: "https://mihir0336.vercel.app/",
       githubLink: "https://github.com/Mihir0336/Mihir-s-sPortfolio"
-    },
-    {
-      id: 5,
-      title: "Weather Application",
-      description: "Real-time weather app with location-based forecasts and animations.",
-      image: "https://picsum.photos/seed/weather/600/400",
-      category: ["app", "frontend"],
-      technologies: ["React", "OpenWeather API", "CSS Modules"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-    {
-      id: 6,
-      title: "Blog Platform",
-      description: "Full-featured blog with CMS and user authentication.",
-      image: "https://picsum.photos/seed/blog/600/400", 
-      category: ["web", "fullstack"],
-      technologies: ["Next.js", "Prisma", "PostgreSQL"],
-      demoLink: "#",
-      githubLink: "#"
     }
   ];
 
