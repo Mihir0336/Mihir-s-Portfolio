@@ -118,11 +118,10 @@ export default function Projects() {
       description: "A modern inventory and billing system built with Next.js and TypeScript, featuring secure authentication, efficient product tracking, GST-inclusive billing, and a responsive UI.",
       image: "https://picsum.photos/seed/inventorybilling/600/400",
       category: ["app", "fullstack"],
-      technologies: ["Next.js", "React", "TypeScript", "Prisma ORM", "MySQL", "Tailwind CSS", "next-auth", "Lucide Icons", "date-fns"],
+      technologies: ["Next.js", "React", "TypeScript", "Prisma ORM", "MySQL", "Tailwind CSS", "NextAuth", "Lucide Icons"],
       demoLink: "#",
       githubLink: "https://github.com/Mihir0336/inventory-billing-system"
     },
-
     {
       id: 5,
       title: "Portfolio Website",
@@ -132,6 +131,16 @@ export default function Projects() {
       technologies: ["React", "Framer Motion", "Tailwind CSS"],
       demoLink: "https://mihir0336.vercel.app/",
       githubLink: "https://github.com/Mihir0336/Mihir-s-sPortfolio"
+    },
+    {
+      id: 6,
+      title: "Personal Finance Visualizer",
+      description: "A responsive web app to track personal finances with monthly expense charts, transaction management, and an intuitive UI built with modern web technologies.",
+      image: "https://picsum.photos/seed/financevisualizer/600/400",
+      category: ["app", "fullstack"],
+      technologies: ["Next.js", "React", "TypeScript", "MongoDB", "Tailwind CSS", "ReCharts", "Shadcn/UI"],
+      demoLink: "#",
+      githubLink: "https://github.com/Mihir0336/finance-visualizer"
     }
   ];
 
