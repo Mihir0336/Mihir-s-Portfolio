@@ -114,6 +114,17 @@ export default function Projects() {
     },
     {
       id: 4,
+      title: "Inventory & Billing System",
+      description: "A modern inventory and billing system built with Next.js and TypeScript, featuring secure authentication, efficient product tracking, GST-inclusive billing, and a responsive UI.",
+      image: "https://picsum.photos/seed/inventorybilling/600/400",
+      category: ["app", "fullstack"],
+      technologies: ["Next.js", "React", "TypeScript", "Prisma ORM", "MySQL", "Tailwind CSS", "next-auth", "Lucide Icons", "date-fns"],
+      demoLink: "#",
+      githubLink: "https://github.com/Mihir0336/inventory-billing-system"
+    },
+
+    {
+      id: 5,
       title: "Portfolio Website",
       description: "Personal portfolio with smooth animations and responsive design.",
       image: "https://picsum.photos/seed/portfolio/600/400",
