@@ -309,7 +309,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="font-semibold text-white">Phone</h4>
-                <p className="text-white/70">+91 9664792131</p>
+                <p className="text-white/70">+91 9157727068</p>
               </div>
             </motion.div>
 
