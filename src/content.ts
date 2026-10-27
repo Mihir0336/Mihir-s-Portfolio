@@ -13,6 +13,8 @@ export const profile = {
   role: "Full Stack Developer",
   pitch:
     "I build full-stack web apps with Next.js, React and TypeScript, and for 1+ year I've been paid to ship gameplay systems and in-game UIs remotely for two live GTA V roleplay communities.",
+  // Rendered in the foreground colour inside the pitch; must appear verbatim in `pitch`.
+  pitchHighlight: "paid to ship gameplay systems and in-game UIs",
   location: "Ahmedabad, Gujarat, India",
   locationShort: "Ahmedabad, IN",
   email: "mihirpatel0336@gmail.com",
@@ -26,6 +28,7 @@ export type Experience = {
   role: string;
   company: string;
   companyNote: string;
+  region: string;
   location: string;
   start: string;
   end: string;
@@ -39,6 +42,7 @@ export const experience: Experience[] = [
     role: "Full Stack Developer",
     company: "Legacy Network",
     companyNote: "US-based GTA V roleplay server",
+    region: "US",
     location: "Remote",
     start: "Aug 2025",
     end: "Present",
@@ -54,6 +58,7 @@ export const experience: Experience[] = [
     role: "Full Stack Developer",
     company: "Yatra Roleplay",
     companyNote: "Indian GTA V roleplay server",
+    region: "IN",
     location: "Remote",
     start: "Aug 2025",
     end: "Present",
@@ -71,6 +76,8 @@ export type Project = {
   summary: string;
   highlights: string[];
   tags: string[];
+  // Which illustrated cover to draw (see components/project-cover.tsx).
+  cover: "billing" | "finance" | "marketplace" | "stock";
   github?: string;
   live?: string;
 };
@@ -86,6 +93,7 @@ export const projects: Project[] = [
       "Dashboard with charts",
     ],
     tags: ["Next.js", "TypeScript", "Prisma ORM", "MySQL", "NextAuth", "Tailwind CSS"],
+    cover: "billing",
     // The repo currently returns 404 (private). Uncomment once it's public:
     // github: "https://github.com/Mihir0336/inventory-billing-system",
   },
@@ -99,8 +107,10 @@ export const projects: Project[] = [
       "5-sec auto-refresh with cross-tab sync",
     ],
     tags: ["Next.js 14", "TypeScript", "MongoDB", "Recharts", "shadcn/ui"],
+    cover: "finance",
     github: "https://github.com/Mihir0336/finance-visualizer",
-    live: "https://personal-finance-bay-five.vercel.app",
+    // The deployment returns 404 DEPLOYMENT_NOT_FOUND (checked 2026-10-27). Uncomment once it's redeployed:
+    // live: "https://personal-finance-bay-five.vercel.app",
   },
   {
     title: "UniMart, University Marketplace",
@@ -112,6 +122,7 @@ export const projects: Project[] = [
       "SQL injection and XSS protection",
     ],
     tags: ["PHP", "MySQL", "JavaScript", "jQuery/AJAX", "Bootstrap"],
+    cover: "marketplace",
     github: "https://github.com/Mihir0336/UniMart-Groceries",
   },
   {
@@ -119,6 +130,7 @@ export const projects: Project[] = [
     summary: "Inventory and GST billing system built for Agricon Shop.",
     highlights: ["Inventory management", "GST billing", "Admin panel"],
     tags: ["PHP", "MySQL", "JavaScript"],
+    cover: "stock",
     github: "https://github.com/Mihir0336/Stock-Management-System",
   },
 ];

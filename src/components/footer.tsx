@@ -8,6 +8,13 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}. Built with Next.js, hosted on Vercel.
         </p>
+        <p className="hidden md:block">
+          Press{" "}
+          <kbd className="rounded border border-line px-1.5 py-0.5 text-[10px] text-muted">
+            Ctrl/⌘ K
+          </kbd>{" "}
+          to get around
+        </p>
         <a href="#top" className="inline-flex items-center gap-1.5 hover:text-fg">
           Back to top <ArrowUp className="size-3.5" />
         </a>

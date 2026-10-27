@@ -1,10 +1,18 @@
 import { education } from "@/content";
 import { Reveal } from "./reveal";
-import { Section } from "./ui";
+import { Em, Section } from "./ui";
 
 export function Education() {
   return (
-    <Section id="education" index="04" title="Education">
+    <Section
+      id="education"
+      index="04"
+      title={
+        <>
+          Where I <Em>studied</Em>
+        </>
+      }
+    >
       <Reveal>
         <ul className="divide-y divide-line border-y border-line">
           {education.map((e) => (

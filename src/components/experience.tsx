@@ -1,10 +1,19 @@
 import { experience } from "@/content";
+import { NuiFlow } from "./nui-flow";
 import { Reveal } from "./reveal";
-import { Section, Tags } from "./ui";
+import { Em, Section, Tags } from "./ui";
 
 export function Experience() {
   return (
-    <Section id="experience" index="01" title="Where I've worked">
+    <Section
+      id="experience"
+      index="01"
+      title={
+        <>
+          Where I&apos;ve <Em>worked</Em>
+        </>
+      }
+    >
       <ol className="relative space-y-12 border-l border-line pl-7 sm:pl-9">
         {experience.map((job, i) => (
           <li key={job.company} className="relative">
@@ -16,7 +25,12 @@ export function Experience() {
             />
             <Reveal delay={i * 0.06}>
               <p className="font-mono text-xs text-subtle">
-                <time>{job.start}</time> — {job.current ? <span className="text-accent">{job.end}</span> : <time>{job.end}</time>}
+                <time>{job.start}</time> —{" "}
+                {job.current ? (
+                  <span className="text-accent">{job.end}</span>
+                ) : (
+                  <time>{job.end}</time>
+                )}
                 <span className="mx-2 text-line-strong">/</span>
                 {job.location}
               </p>
@@ -29,7 +43,10 @@ export function Experience() {
               <ul className="mt-4 max-w-2xl space-y-2 text-[15px] leading-relaxed text-muted">
                 {job.points.map((p) => (
                   <li key={p} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-[11px] h-px w-3 shrink-0 bg-line-strong" />
+                    <span
+                      aria-hidden="true"
+                      className="mt-[11px] h-px w-3 shrink-0 bg-line-strong"
+                    />
                     <span>{p}</span>
                   </li>
                 ))}
@@ -39,6 +56,10 @@ export function Experience() {
           </li>
         ))}
       </ol>
+
+      <Reveal className="mt-16 sm:mt-20">
+        <NuiFlow />
+      </Reveal>
     </Section>
   );
 }

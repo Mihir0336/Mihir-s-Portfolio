@@ -58,11 +58,21 @@ export function ContactForm() {
   const sending = status.state === "sending";
 
   return (
-    <form onSubmit={onSubmit} className="relative space-y-4 rounded-2xl border border-line bg-card/40 p-6 sm:p-7">
+    <form
+      onSubmit={onSubmit}
+      className="relative space-y-4 rounded-2xl border border-line bg-card/40 p-6 sm:p-7"
+    >
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm text-muted">Name</span>
-          <input name="name" required maxLength={100} autoComplete="name" className={field} placeholder="Jane Doe" />
+          <input
+            name="name"
+            required
+            maxLength={100}
+            autoComplete="name"
+            className={field}
+            placeholder="Jane Doe"
+          />
         </label>
         <label className="block">
           <span className="mb-1.5 block text-sm text-muted">Email</span>
@@ -102,7 +112,10 @@ export function ContactForm() {
           {status.state === "error" && (
             <>
               {status.message} You can also email{" "}
-              <a href={`mailto:${profile.email}`} className="text-accent underline underline-offset-4">
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-accent underline underline-offset-4"
+              >
                 {profile.email}
               </a>
               .

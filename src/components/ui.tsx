@@ -8,7 +8,7 @@ export function Section({
 }: {
   id: string;
   index: string;
-  title: string;
+  title: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -19,13 +19,22 @@ export function Section({
         </p>
         <h2
           id={`${id}-title`}
-          className="mt-3 text-2xl font-semibold tracking-tight text-fg sm:text-3xl"
+          className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.035em] text-fg sm:text-[2.6rem]"
         >
           {title}
         </h2>
       </Reveal>
       <div className="mt-10 sm:mt-12">{children}</div>
     </section>
+  );
+}
+
+// Serif italic accent word inside a heading.
+export function Em({ children }: { children: React.ReactNode }) {
+  return (
+    <em className="pr-[0.05em] font-serif text-[1.12em] font-normal italic leading-none tracking-normal">
+      {children}
+    </em>
   );
 }
 

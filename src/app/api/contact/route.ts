@@ -38,7 +38,10 @@ export async function POST(req: Request) {
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (rateLimited(ip)) {
-    return Response.json({ error: "Too many messages. Try again in a few minutes." }, { status: 429 });
+    return Response.json(
+      { error: "Too many messages. Try again in a few minutes." },
+      { status: 429 },
+    );
   }
 
   const apiKey = process.env.RESEND_API_KEY;
