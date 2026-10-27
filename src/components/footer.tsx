@@ -19,6 +19,12 @@ export function Footer() {
           Back to top <ArrowUp className="size-3.5" />
         </a>
       </div>
+      {/* Oversized wordmark, cropped by the bottom edge of the page. */}
+      <div aria-hidden="true" className="pointer-events-none select-none overflow-hidden">
+        <p className="mx-auto -mb-[0.22em] max-w-5xl bg-linear-to-b from-line-strong to-transparent bg-clip-text px-5 text-[clamp(3.5rem,19vw,13rem)] font-semibold leading-none tracking-[-0.06em] text-transparent sm:px-8">
+          {profile.name}
+        </p>
+      </div>
     </footer>
   );
 }

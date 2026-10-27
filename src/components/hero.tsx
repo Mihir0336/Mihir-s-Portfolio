@@ -1,6 +1,7 @@
 import { experience, profile, site } from "@/content";
 import { ArrowDown, GitHub, LinkedIn, Mail } from "./icons";
 import { LocalTime } from "./local-time";
+import { Marquee } from "./marquee";
 import { Spotlight } from "./spotlight";
 import { buttonStyles, ExternalLink } from "./ui";
 
@@ -72,7 +73,7 @@ function StatusPanel() {
 
 export function Hero() {
   return (
-    <section id="top" aria-label="Introduction" className="pb-20 pt-14 sm:pb-28 sm:pt-24">
+    <section id="top" aria-label="Introduction" className="pb-4 pt-14 sm:pb-8 sm:pt-24">
       <p
         className="flex animate-rise items-center gap-2.5 font-mono text-xs text-subtle"
         style={rise(0)}
@@ -126,6 +127,13 @@ export function Hero() {
         <div className="animate-rise" style={rise(4)}>
           <StatusPanel />
         </div>
+      </div>
+
+      <div className="mt-20 animate-rise sm:mt-24" style={rise(5)}>
+        <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-subtle">
+          Tools I ship with
+        </p>
+        <Marquee />
       </div>
     </section>
   );

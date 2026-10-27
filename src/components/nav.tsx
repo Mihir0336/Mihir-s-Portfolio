@@ -134,6 +134,10 @@ export function Nav() {
           </button>
         </div>
       </nav>
+      <div
+        aria-hidden="true"
+        className="scroll-progress absolute inset-x-0 -bottom-px h-px bg-accent"
+      />
 
       {open && (
         <ul

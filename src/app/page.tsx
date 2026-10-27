@@ -3,6 +3,7 @@ import { Education } from "@/components/education";
 import { Experience } from "@/components/experience";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
+import { HeroBackdrop } from "@/components/hero-backdrop";
 import { Nav } from "@/components/nav";
 import { Projects } from "@/components/projects";
 import { Skills } from "@/components/skills";
@@ -35,10 +36,7 @@ export default function Home() {
       >
         Skip to content
       </a>
-      <div
-        aria-hidden="true"
-        className="hero-backdrop pointer-events-none absolute inset-x-0 top-0 -z-10 h-[44rem]"
-      />
+      <HeroBackdrop />
       <Nav />
       <main className="mx-auto max-w-5xl px-5 sm:px-8">
         <Hero />

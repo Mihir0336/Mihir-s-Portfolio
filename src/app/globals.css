@@ -56,6 +56,7 @@
   --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Transform-only variant for the hero text so it paints immediately (keeps LCP fast). */
   --animate-slide: slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 45s linear infinite;
   --animate-pop: pop 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Packets travelling along the NUI flow diagram. The moving wrapper spans the whole line,
      so a percentage transform carries the dot from one end to the other. */
@@ -63,6 +64,12 @@
   --animate-flow-l: flow-l 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   --animate-flow-d: flow-d 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   --animate-flow-u: flow-u 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 
   @keyframes pop {
     from {
@@ -168,6 +175,47 @@ body::after {
     56px 56px,
     56px 56px;
   mask-image: radial-gradient(ellipse 80% 70% at 30% 0%, #000 30%, transparent 75%);
+}
+
+/* Accent grid revealed around the pointer; --hx / --hy come from <HeroBackdrop>. */
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(320px circle at var(--hx, -999px) var(--hy, -999px), color-mix(in oklab, var(--accent) 10%, transparent), transparent 70%),
+    linear-gradient(to right, color-mix(in oklab, var(--accent) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--accent) 60%, transparent) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    56px 56px,
+    56px 56px;
+  mask-image: radial-gradient(200px circle at var(--hx, -999px) var(--hy, -999px), #000, transparent 80%);
+}
+
+/* Reading progress under the nav, driven by scroll position alone (no JS). Browsers without
+   scroll-driven animations simply don't show it. */
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    transform-origin: left;
+    animation: progress linear both;
+    animation-duration: auto !important;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* Dotted surface used behind the project covers. */
