@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #fafaf9;
+  --fg: #0b0b0c;
+  --muted: #52525b;
+  --subtle: #6b6b73;
+  --card: #ffffff;
+  --card-hover: #f5f5f4;
+  --line: #e7e5e4;
+  --line-strong: #d6d3d1;
+  --accent: #b45309;
+  --btn: #0b0b0c;
+  --btn-fg: #fafaf9;
+  --btn-hover: #27272a;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0b0c;
+  --fg: #ededef;
+  --muted: #a1a1a8;
+  --subtle: #8b8b92;
+  --card: #131315;
+  --card-hover: #18181b;
+  --line: #1f1f22;
+  --line-strong: #2e2e33;
+  --accent: #ffb020;
+  --btn: #ffb020;
+  --btn-fg: #1a1200;
+  --btn-hover: #ffc04d;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-btn: var(--btn);
+  --color-btn-fg: var(--btn-fg);
+  --color-btn-hover: var(--btn-hover);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@theme {
+  --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Transform-only variant for the hero text so it paints immediately (keeps LCP fast). */
+  --animate-slide: slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateY(8px);
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

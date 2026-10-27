@@ -1,76 +1,29 @@
-## Portfolio
-Mihir's Portfolio
+# Mihir Patel — Portfolio
 
-## About the Project
-This is a portfolio project showcasing Mihir's work and skills.
+Personal site at [mihir0336.vercel.app](https://mihir0336.vercel.app).
 
-## Installation
-To install the project, follow these steps:
+Built with Next.js (App Router), TypeScript, Tailwind CSS v4 and Motion. Dark-first with a light theme toggle.
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
+## Editing content
 
-2. Navigate to the project directory:
-   ```bash
-   cd Portfolio
-   ```
+Everything on the page (experience, projects, skills, education, contact details) lives in
+[`src/content.ts`](src/content.ts). Keep it in sync with the resume at `public/Mihir_Patel_CV.pdf`.
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-## Languages and Frameworks Used
-- **Languages**: JavaScript, HTML, CSS
-- **Frameworks**: React, Tailwind CSS
-
-## Required Libraries
-
-This project uses several libraries that need to be installed. Here's how to install them:
+## Development
 
 ```bash
-# Core dependencies
-npm install react react-dom
-
-# Animation and UI libraries
-npm install framer-motion
-npm install lottie-react
-npm install @emailjs/browser
-
-# Styling
-npm install tailwindcss
-npm install @tailwindcss/forms
-
-# Icons
-npm install @fortawesome/fontawesome-free
+npm install
+npm run dev
 ```
 
-### Library Versions
-- React: ^18.2.0
-- React DOM: ^18.2.0
-- Framer Motion: ^10.16.4
-- Lottie React: ^2.4.0
-- EmailJS: ^4.1.0
-- Tailwind CSS: ^3.3.0
-- Font Awesome: ^6.4.0
+## Contact form
 
-### Additional Setup
-1. For EmailJS:
-   - Create an account at [EmailJS](https://www.emailjs.com/)
-   - Get your Service ID, Template ID, and Public Key
-   - Update these values in the Contact component
+The form posts to `/api/contact`, which sends email through [Resend](https://resend.com).
+Set these environment variables (locally in `.env.local`, on Vercel under Settings → Environment Variables):
 
-2. For Lottie Animations:
-   - Place your Lottie animation JSON files in the `public` directory
-   - Update the path in the Hero component accordingly
+| Variable           | Value                                                        |
+| ------------------ | ------------------------------------------------------------ |
+| `RESEND_API_KEY`   | API key from resend.com/api-keys                             |
+| `CONTACT_TO_EMAIL` | Where messages go (the email you signed up to Resend with)   |
 
-3. For Tailwind CSS:
-   - Make sure to run `npx tailwindcss init` if not already done
-   - Configure your `tailwind.config.js` file
+Without `RESEND_API_KEY` the form shows a friendly error with the email address instead.
