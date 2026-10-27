@@ -135,9 +135,24 @@
   }
 }
 
+/* No visible page scrollbar. Scrolling still works with wheel, trackpad, touch and keys, and
+   the progress line under the nav shows where you are. */
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 body {
@@ -292,10 +307,15 @@ body::after {
   color: var(--bg);
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* Keyboard focus ring. It lives in the base layer so utilities can override it: unlayered
+   CSS outranks Tailwind's utilities, which made text fields show this ring on top of their
+   own focus border and squared off rounded corners on focus. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

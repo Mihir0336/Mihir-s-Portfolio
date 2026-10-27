@@ -217,7 +217,7 @@ export default function CommandMenu({
         id="cmd-list"
         role="listbox"
         aria-label="Commands"
-        className="max-h-[min(24rem,55vh)] overflow-y-auto p-2"
+        className="no-scrollbar max-h-[min(24rem,55vh)] overflow-y-auto p-2"
       >
         {results.length === 0 && (
           <li className="px-3 py-8 text-center text-sm text-subtle">No results.</li>

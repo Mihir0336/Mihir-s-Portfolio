@@ -10,7 +10,7 @@ type Status =
   | { state: "error"; message: string };
 
 const field =
-  "block w-full rounded-lg border border-line bg-card px-3.5 py-2.5 text-[15px] text-fg placeholder:text-subtle/70 transition-colors hover:border-line-strong focus:border-accent focus:outline-none";
+  "block w-full rounded-lg border border-line bg-card px-3.5 py-2.5 text-[15px] text-fg placeholder:text-subtle/70 caret-accent transition-[border-color,box-shadow] hover:border-line-strong focus:border-accent/70 focus:ring-4 focus:ring-accent/10 focus:outline-none";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ state: "idle" });
