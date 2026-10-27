@@ -21,12 +21,12 @@
 .dark {
   --bg: #0b0b0c;
   --fg: #ededef;
-  --muted: #a1a1a8;
-  --subtle: #8b8b92;
+  --muted: #b1b1b8;
+  --subtle: #8e8e96;
   --card: #131315;
   --card-hover: #18181b;
-  --line: #1f1f22;
-  --line-strong: #2e2e33;
+  --line: #212125;
+  --line-strong: #323238;
   --accent: #ffb020;
   --btn: #ffb020;
   --btn-fg: #1a1200;
@@ -49,12 +49,63 @@
   --color-btn-hover: var(--btn-hover);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
 }
 
 @theme {
   --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Transform-only variant for the hero text so it paints immediately (keeps LCP fast). */
   --animate-slide: slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Packets travelling along the NUI flow diagram. The moving wrapper spans the whole line,
+     so a percentage transform carries the dot from one end to the other. */
+  --animate-flow-r: flow-r 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  --animate-flow-l: flow-l 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  --animate-flow-d: flow-d 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  --animate-flow-u: flow-u 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.98);
+    }
+  }
+
+  @keyframes flow-r {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes flow-l {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes flow-d {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes flow-u {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: none;
+    }
+  }
 
   @keyframes rise {
     from {
@@ -89,6 +140,103 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Film grain over everything, very faint. Fixed so it never repaints on scroll. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.dark body::after {
+  opacity: 0.05;
+}
+
+/* Faint grid with a warm glow behind the hero, faded out at the edges. */
+.hero-backdrop {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 15% 0%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 70%),
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    56px 56px,
+    56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 30% 0%, #000 30%, transparent 75%);
+}
+
+/* Dotted surface used behind the project covers. */
+.dots {
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Cards light up their border, and softly their surface, where the pointer is.
+   --mx / --my are set by the <Spotlight> component. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.spotlight::before {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--accent), transparent 70%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.spotlight::after {
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--accent) 7%, transparent), transparent 65%);
+}
+
+@media (hover: hover) {
+  .spotlight:hover::before,
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Theme switch: the new theme grows as a circle out of the toggle (see theme-toggle.tsx). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0));
+  }
+  to {
+    clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 0));
+  }
 }
 
 ::selection {

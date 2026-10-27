@@ -35,6 +35,10 @@ export default function Home() {
       >
         Skip to content
       </a>
+      <div
+        aria-hidden="true"
+        className="hero-backdrop pointer-events-none absolute inset-x-0 top-0 -z-10 h-[44rem]"
+      />
       <Nav />
       <main className="mx-auto max-w-5xl px-5 sm:px-8">
         <Hero />

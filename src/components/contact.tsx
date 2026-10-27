@@ -3,16 +3,24 @@ import { ContactForm } from "./contact-form";
 import { CopyEmail } from "./copy-email";
 import { GitHub, LinkedIn, MapPin, Phone } from "./icons";
 import { Reveal } from "./reveal";
-import { ExternalLink, Section } from "./ui";
+import { Em, ExternalLink, Section } from "./ui";
 
 export function Contact() {
   return (
-    <Section id="contact" index="05" title="Let's talk">
+    <Section
+      id="contact"
+      index="05"
+      title={
+        <>
+          Let&apos;s <Em>talk</Em>
+        </>
+      }
+    >
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-14">
         <Reveal>
           <p className="max-w-md text-base leading-relaxed text-muted sm:text-lg">
-            I&apos;m looking for a full-time full stack role. Email is the fastest way to reach
-            me, or use the form.
+            I&apos;m looking for a full-time full stack role. Email is the fastest way to reach me,
+            or use the form.
           </p>
 
           <div className="mt-8 flex items-center gap-2">
@@ -35,12 +43,18 @@ export function Contact() {
               <MapPin className="text-subtle" /> {profile.location}
             </li>
             <li>
-              <ExternalLink href={profile.github} className="inline-flex items-center gap-3 hover:text-fg">
+              <ExternalLink
+                href={profile.github}
+                className="inline-flex items-center gap-3 hover:text-fg"
+              >
                 <GitHub className="text-subtle" /> github.com/Mihir0336
               </ExternalLink>
             </li>
             <li>
-              <ExternalLink href={profile.linkedin} className="inline-flex items-center gap-3 hover:text-fg">
+              <ExternalLink
+                href={profile.linkedin}
+                className="inline-flex items-center gap-3 hover:text-fg"
+              >
                 <LinkedIn className="text-subtle" /> linkedin.com/in/mihirpatel0336
               </ExternalLink>
             </li>
