@@ -173,51 +173,10 @@ function Marketplace() {
   );
 }
 
-function Stock() {
-  const levels = [0.82, 0.56, 0.12, 0.7, 0.38];
-  return (
-    <>
-      <rect x="44" y="34" width="392" height="176" rx="12" {...panel} />
-      <rect x="62" y="52" width="58" height="8" rx="4" {...soft} />
-      <rect x="352" y="48" width="66" height="16" rx="8" fill="var(--line)" />
-      <path d="M62 76h356" stroke="var(--line)" />
-      {levels.map((level, i) => {
-        const y = 90 + i * 23;
-        const low = level < 0.2;
-        return (
-          <g key={i}>
-            <rect x="62" y={y} width="14" height="14" rx="4" fill="var(--line)" />
-            <rect x="86" y={y + 4} width={i % 2 ? 70 : 96} height="6" rx="3" {...bar} />
-            <rect x="214" y={y + 3} width="120" height="8" rx="4" fill="var(--line)" />
-            <rect
-              x="214"
-              y={y + 3}
-              width={120 * level}
-              height="8"
-              rx="4"
-              {...(low ? accent : soft)}
-            />
-            <rect
-              x="354"
-              y={y + 1}
-              width="64"
-              height="12"
-              rx="6"
-              fill={low ? "var(--accent)" : "var(--line)"}
-              opacity={low ? 0.9 : 1}
-            />
-          </g>
-        );
-      })}
-    </>
-  );
-}
-
 const covers = {
   billing: Billing,
   finance: Finance,
   marketplace: Marketplace,
-  stock: Stock,
 };
 
 export function ProjectCover({ kind }: { kind: Project["cover"] }) {

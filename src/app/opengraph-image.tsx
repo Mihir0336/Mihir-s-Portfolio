@@ -17,7 +17,7 @@ export default async function OpengraphImage() {
     font("geist-mono/GeistMono-Regular.ttf"),
   ]);
 
-  const stack = ["Next.js", "React", "TypeScript", "Node.js", "Lua"];
+  const stack = profile.headline;
 
   return new ImageResponse(
     <div

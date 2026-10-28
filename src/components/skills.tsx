@@ -4,6 +4,16 @@ import { Spotlight } from "./spotlight";
 import { TechIcon } from "./tech-icon";
 import { Em, Section } from "./ui";
 
+// Widen the last card so an incomplete final row has no hole (2 columns on tablets, 3 on desktop).
+const lastSpan = [
+  skills.length % 2 === 1 ? "sm:col-span-2" : "sm:col-span-1",
+  skills.length % 3 === 2
+    ? "lg:col-span-2"
+    : skills.length % 3 === 1
+      ? "lg:col-span-3"
+      : "lg:col-span-1",
+].join(" ");
+
 export function Skills() {
   return (
     <Section
@@ -17,7 +27,7 @@ export function Skills() {
     >
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map(({ group, items }, i) => (
-          <li key={group}>
+          <li key={group} className={i === skills.length - 1 ? lastSpan : undefined}>
             <Reveal delay={(i % 3) * 0.05} className="h-full">
               <Spotlight className="h-full rounded-2xl border border-line bg-card/60 p-6 transition-colors hover:border-line-strong">
                 <div className="flex items-baseline justify-between font-mono text-xs">

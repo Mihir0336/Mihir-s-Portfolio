@@ -5,8 +5,8 @@ import { Reveal } from "./reveal";
 import { Spotlight } from "./spotlight";
 import { Em, ExternalLink, Section, Tags } from "./ui";
 
-// Bento layout on a 5-column grid (2 columns on tablets): wide / narrow, then narrow / wide.
-const spans = ["lg:col-span-3", "lg:col-span-2", "lg:col-span-2", "lg:col-span-3"];
+// The first (featured) project spans the full width, with its cover beside the text on desktop;
+// the rest sit two to a row.
 
 const linkStyle = "inline-flex items-center gap-1.5 font-mono text-xs transition-colors";
 
@@ -21,13 +21,19 @@ export function Projects() {
         </>
       }
     >
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {projects.map((p, i) => (
-          <li key={p.title} className={spans[i % spans.length]}>
+          <li key={p.title} className={i === 0 ? "sm:col-span-2" : undefined}>
             <Reveal delay={(i % 2) * 0.06} className="h-full">
               <Spotlight className="group h-full rounded-2xl border border-line bg-card transition-colors duration-200 hover:border-line-strong">
-                <article className="flex h-full flex-col">
-                  <div className="dots relative h-40 overflow-hidden rounded-t-[15px] border-b border-line bg-bg/40 sm:h-48">
+                <article className={`flex h-full flex-col ${i === 0 ? "lg:flex-row" : ""}`}>
+                  <div
+                    className={`dots relative h-40 shrink-0 overflow-hidden rounded-t-[15px] border-b border-line bg-bg/40 sm:h-48 ${
+                      i === 0
+                        ? "lg:h-auto lg:w-[46%] lg:rounded-tr-none lg:rounded-l-[15px] lg:border-r lg:border-b-0"
+                        : ""
+                    }`}
+                  >
                     <ProjectCover kind={p.cover} />
                   </div>
                   <div className="flex flex-1 flex-col p-6 sm:p-7">

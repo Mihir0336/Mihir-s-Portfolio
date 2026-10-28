@@ -1,4 +1,4 @@
-import { education } from "@/content";
+import { education, profile } from "@/content";
 import { Reveal } from "./reveal";
 import { Em, Section } from "./ui";
 
@@ -32,6 +32,12 @@ export function Education() {
             </li>
           ))}
         </ul>
+        <p className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-2 text-sm text-muted">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-subtle">
+            Languages
+          </span>
+          {profile.languages.join(" · ")}
+        </p>
       </Reveal>
     </Section>
   );

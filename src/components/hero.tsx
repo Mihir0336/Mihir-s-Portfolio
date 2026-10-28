@@ -42,7 +42,7 @@ function StatusPanel() {
         <LocalTime /> <span className="text-subtle">IST</span>
       </span>,
     ],
-    ["Core stack", "Next.js · React · TypeScript · Lua"],
+    ["Core stack", profile.headline.join(" · ")],
   ];
 
   return (

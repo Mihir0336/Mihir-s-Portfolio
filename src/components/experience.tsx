@@ -68,9 +68,11 @@ export function Experience() {
                     </h3>
                     <p className="mt-0.5 text-sm text-subtle">{job.companyNote}</p>
                   </div>
-                  <span className="hidden shrink-0 rounded-md border border-line px-2 py-0.5 font-mono text-[11px] text-muted sm:inline">
-                    {job.region}
-                  </span>
+                  {job.region && (
+                    <span className="hidden shrink-0 rounded-md border border-line px-2 py-0.5 font-mono text-[11px] text-muted sm:inline">
+                      {job.region}
+                    </span>
+                  )}
                 </div>
                 <ul className="mt-5 space-y-2 text-[15px] leading-relaxed text-muted sm:pl-15">
                   {job.points.map((p) => (
