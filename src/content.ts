@@ -47,7 +47,7 @@ export const experience: Experience[] = [
     company: "Legacy Network",
     companyNote: "US-based multiplayer GTA V roleplay server",
     region: "US",
-    location: "Remote",
+    location: "Contract · Remote",
     start: "Aug 2025",
     end: "Present",
     current: true,
